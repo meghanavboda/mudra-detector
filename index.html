@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mudra Detector</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Mudra Detector</h1>
+      <p class="subtitle">Show a hand gesture to the camera</p>
+    </header>
+
+    <div class="camera-wrapper">
+      <video id="video" autoplay playsinline></video>
+      <canvas id="canvas"></canvas>
+      <div id="status" class="status">Starting camera...</div>
+    </div>
+
+    <div class="info-panel">
+      <div class="stat">
+        <span class="label">Hands detected</span>
+        <span id="hand-count" class="value">0</span>
+      </div>
+      <div class="stat">
+        <span class="label">Landmarks</span>
+        <span id="landmark-count" class="value">0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MediaPipe Hands via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+</html>
