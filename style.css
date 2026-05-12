@@ -44,6 +44,28 @@ h1 {
   font-size: 0.95rem;
 }
 
+/* Mudra display */
+.mudra-display {
+  font-family: 'Georgia', 'Garamond', serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #c4b5f0;
+  text-align: center;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mudra-display.detected {
+  color: #f5d547;
+  text-shadow: 0 0 8px rgba(245, 213, 71, 0.4),
+               0 0 20px rgba(245, 213, 71, 0.2),
+               0 0 30px rgba(167, 139, 250, 0.15);
+}
+
 /* Camera area */
 .camera-wrapper {
   position: relative;
