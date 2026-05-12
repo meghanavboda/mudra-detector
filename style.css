@@ -5,9 +5,9 @@
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  background: #0f0f14;
-  color: #e8e8f0;
+  font-family: 'Georgia', 'Garamond', serif;
+  background: linear-gradient(180deg, #f5e6d8 0%, #f0dcc8 100%);
+  color: #4a2c2a;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -18,64 +18,95 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  padding: 32px 16px;
+  gap: 40px;
+  padding: 56px 24px;
   width: 100%;
-  max-width: 780px;
+  max-width: 950px;
 }
 
 header {
   text-align: center;
+  position: relative;
+  padding: 40px 32px;
+  background: linear-gradient(135deg, #e8c9b9 0%, #d9b8a3 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(155, 89, 65, 0.15);
+}
+
+header::before,
+header::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #8b4513, transparent);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+header::before {
+  top: 12px;
+}
+
+header::after {
+  bottom: 12px;
 }
 
 h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  background: linear-gradient(135deg, #a78bfa, #60a5fa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: #7a2f1f;
+  text-transform: uppercase;
+  margin: 16px 0;
 }
 
 .subtitle {
-  margin-top: 6px;
-  color: #8888aa;
+  margin-top: 12px;
+  color: #9b5941;
   font-size: 0.95rem;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  font-weight: 400;
 }
 
 /* Mudra display */
 .mudra-display {
   font-family: 'Georgia', 'Garamond', serif;
-  font-size: 3.5rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: #c4b5f0;
+  font-size: 4.2rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: #7a2f1f;
   text-align: center;
-  min-height: 70px;
+  min-height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .mudra-display.detected {
-  color: #f5d547;
-  text-shadow: 0 0 8px rgba(245, 213, 71, 0.4),
-               0 0 20px rgba(245, 213, 71, 0.2),
-               0 0 30px rgba(167, 139, 250, 0.15);
+  color: #c74528;
+  transform: scale(1.1) translateY(-4px);
+  text-shadow: 0 4px 16px rgba(199, 69, 40, 0.25),
+               0 0 24px rgba(218, 112, 74, 0.15);
 }
 
 /* Camera area */
 .camera-wrapper {
   position: relative;
   width: 100%;
-  max-width: 720px;
+  max-width: 900px;
   aspect-ratio: 4 / 3;
   border-radius: 16px;
   overflow: hidden;
-  background: #1a1a24;
-  box-shadow: 0 0 0 1px #2a2a3a, 0 8px 40px rgba(0, 0, 0, 0.6);
+  background: #fff;
+  border: 8px solid #c9a384;
+  box-shadow:
+    0 0 0 2px #d9b8a3,
+    0 16px 48px rgba(155, 89, 65, 0.2);
 }
 
 video {
@@ -84,7 +115,6 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Mirror the feed so it feels natural */
   transform: scaleX(-1);
 }
 
@@ -93,23 +123,25 @@ canvas {
   inset: 0;
   width: 100%;
   height: 100%;
-  /* Canvas is already drawn mirrored in JS */
 }
 
 .status {
   position: absolute;
-  bottom: 14px;
+  bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(6px);
-  color: #c4c4e0;
-  font-size: 0.82rem;
-  padding: 5px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  color: #7a2f1f;
+  font-size: 0.85rem;
+  padding: 10px 22px;
+  border-radius: 28px;
+  border: 1.5px solid #c9a384;
   white-space: nowrap;
-  transition: opacity 0.3s;
+  transition: all 0.3s ease;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .status.hidden {
@@ -120,30 +152,44 @@ canvas {
 /* Info panel */
 .info-panel {
   display: flex;
-  gap: 24px;
+  gap: 32px;
+  margin-top: 8px;
 }
 
 .stat {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #1a1a24;
-  border: 1px solid #2a2a3a;
+  background: linear-gradient(135deg, rgba(218, 112, 74, 0.08), rgba(201, 163, 132, 0.08));
+  border: 2px solid #d9b8a3;
   border-radius: 12px;
-  padding: 14px 28px;
-  min-width: 130px;
+  padding: 20px 36px;
+  min-width: 160px;
+  box-shadow: 0 4px 12px rgba(155, 89, 65, 0.08);
+  transition: all 0.3s ease;
+}
+
+.stat:hover {
+  border-color: #c74528;
+  background: linear-gradient(135deg, rgba(218, 112, 74, 0.12), rgba(201, 163, 132, 0.12));
+  box-shadow: 0 6px 16px rgba(199, 69, 40, 0.12);
 }
 
 .label {
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #6666aa;
+  letter-spacing: 0.12em;
+  color: #9b5941;
+  font-weight: 600;
+  margin-bottom: 4px;
 }
 
 .value {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #a78bfa;
-  margin-top: 2px;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: #c74528;
+  letter-spacing: 0.04em;
 }
+
+
+
